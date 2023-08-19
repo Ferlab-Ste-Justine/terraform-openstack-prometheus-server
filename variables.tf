@@ -1,7 +1,7 @@
 variable "name" {
   description = "Name to give to the vm"
   type        = string
-  default     = "etcd"
+  default     = "prometheus"
 }
 
 variable "image_source" {
@@ -10,6 +10,11 @@ variable "image_source" {
     image_id = string
     volume_id = string
   })
+
+  validation {
+    condition     = (var.image_source.image_id != "" && var.image_source.volume_id == "") || (var.image_source.image_id == "" && var.image_source.volume_id != "")
+    error_message = "You must provide either an image_id or a volume_id, but not both."
+  }
 }
 
 variable "flavor_id" {
