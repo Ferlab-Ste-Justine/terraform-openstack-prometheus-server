@@ -32,6 +32,7 @@ A **prometheus.yml** configuration key is expected at the root of the keys prefi
 - **image_source**: Source of the image to provision the server on. It takes the following keys (only one of the two fields should be used, the other one should be empty):
   - **image_id**: Id of the image to associate with a vm that has local storage
   - **volume_id**: Id of a volume containing the os to associate with the vm
+- **data_volume_id**: Id for an optional separate volume to attach to the vm on prometheus' data path
 - **flavor_id**: Id of the vm flavor to assign to the instance. See hardware recommendations to make an informed choice: https://etcd.io/docs/v3.4/op-guide/hardware/
 - **network_port**: Resource of type **openstack_networking_port_v2** to assign to the vm for network connectivity
 - **server_group**: Server group to assign to the node. Should be of type **openstack_compute_servergroup_v2**.
